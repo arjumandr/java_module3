@@ -1,5 +1,4 @@
 package com.book.controller;
-
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,18 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.book.dto.Book;
 import com.book.dto.BookDto;
-import com.book.service.BookService;
 import com.book.service.BookServiceJPA;
 
 import jakarta.validation.Valid;
 
+
+
 @RestController
 @RequestMapping("/api/books")
-public class BookController {
+public class BookControllerJPA {
 //	private final BookService bookService;
 	private final BookServiceJPA bookService;
 
-	public BookController(BookServiceJPA bookService) {
+	public BookControllerJPA(BookServiceJPA bookService) {
 		this.bookService = bookService;
 	}
 	
@@ -53,4 +53,17 @@ public class BookController {
 	public List<Book> get(@PathVariable String name) {
 		return bookService.getByAuthor(name);
 	}
+	@GetMapping("author/{author}")
+	public List<Book> getByAuthor(@PathVariable String author) {
+		return bookService.findByAuthor(author);
+	}
+	@GetMapping("category/{category}")
+	public List<Book> getByCategory(@PathVariable String category){
+		return bookService.findByCategory(category);
+	}
+	@GetMapping("/price/less/{price}")
+	public List<Book> findByPriceLessThan(@PathVariable double price){
+		return bookService.findByPriceLessThan(price);
+	}
+	
 }
