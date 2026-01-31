@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.book.dto.Book;
@@ -64,6 +65,14 @@ public class BookControllerJPA {
 	@GetMapping("/price/less/{price}")
 	public List<Book> findByPriceLessThan(@PathVariable double price){
 		return bookService.findByPriceLessThan(price);
+	}
+	@GetMapping("/price-range")
+	public List<Book> findByPriceRange(@RequestParam("min") double minprice, @RequestParam("max") double maxprice){
+		return bookService.findByPriceRange(minprice, maxprice);
+	}
+	@GetMapping("/search/{keyword}")
+	public List<Book> searchByTitle(@PathVariable String keyword){
+		return bookService.searchByTitle(keyword);
 	}
 	
 }

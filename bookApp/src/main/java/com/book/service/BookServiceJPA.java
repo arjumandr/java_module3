@@ -3,7 +3,6 @@ package com.book.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.book.dto.Book;
@@ -19,7 +18,6 @@ import jakarta.transaction.Transactional;
 public class BookServiceJPA{
 	private final BookRepositoryJPA bookRepo;
 
-	@Autowired
 	public BookServiceJPA(BookRepositoryJPA bookRepo) {
 		this.bookRepo = bookRepo;
 	}
@@ -64,5 +62,11 @@ public class BookServiceJPA{
 	}
 	public void deleteByTitle(String title) {
 		bookRepo.deleteByTitle(title);
+	}
+	public List<Book> searchByTitle(String keyword){
+		return bookRepo.searchByTitle(keyword);
+	}
+	public List<Book> findByPriceRange(double min, double max){
+		return bookRepo.findByPriceRange(min, max);
 	}
 }

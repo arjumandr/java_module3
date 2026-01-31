@@ -12,5 +12,6 @@ public class BookDto {
     private String author;
 	@Positive(message = "Price of book must be valid positiv number.")
     private double price;
+	private String isbn;
 	private String category;
 }

@@ -12,6 +12,7 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private String isbn;
     private String title;
     private String author;
     private double price;
@@ -23,8 +24,9 @@ public class Book {
 		this.category = category;
 	}
 	public Book() {}
-	public Book(Integer id, String title, String author, double price, String category) {
+	public Book(Integer id, String isbn, String title, String author, double price, String category) {
 		this.id = id;
+		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.price = price;
