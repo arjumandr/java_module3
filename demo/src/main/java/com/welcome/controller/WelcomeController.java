@@ -25,7 +25,7 @@ public class WelcomeController {
 	}
 	
 	@GetMapping("welcome/health")
-	public Map<String, String> health() {
+	public Map<String, String	> health() {
 		Map<String, String> response = new HashMap<>();
 		response.put("status", "Up");
 		response.put("application", "Welcome App");
