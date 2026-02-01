@@ -1,6 +1,7 @@
 package com.book.controller;
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,8 @@ import com.book.service.BookServiceJPA;
 import jakarta.validation.Valid;
 
 
-
 @RestController
+@Profile("jpa")
 @RequestMapping("/api/books")
 public class BookControllerJPA {
 //	private final BookService bookService;
